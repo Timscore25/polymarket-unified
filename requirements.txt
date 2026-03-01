@@ -1,0 +1,20 @@
+# Core
+pydantic>=2.0.0
+pydantic-settings>=2.0.0
+
+# HTTP/WebSocket
+httpx>=0.25.0
+websockets>=12.0
+orjson>=3.9.0
+
+# Ethereum signing
+eth-account>=0.10.0
+
+# Data processing
+numpy>=1.24.0
+
+# Logging
+structlog>=23.0.0
+
+# Optional: for development
+python-dotenv>=1.0.0

@@ -1,0 +1,34 @@
+services:
+  trading-bot:
+    build: .
+    container_name: polymarket-unified
+    restart: unless-stopped
+    env_file: .env
+
+    environment:
+      - DRY_RUN=true
+
+    ports:
+      - "127.0.0.1:9306:9306"
+
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: 512M
+        reservations:
+          cpus: "0.25"
+          memory: 128M
+
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "10"
+
+    healthcheck:
+      test: ["CMD", "python", "-c", "import httpx; print('ok')"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
